@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<code id="output"></code>
+
+<button id="run" class="btn">Run</button>
+
+<script >
+const out = document.getElementById('output');
+const btn = document.getElementById('run');
+
+btn.addEventListener('click', e => {
+    fetch('api/CustomVerb', { 
+        method: 'QUERY', 
+        headers: { 'content-type': 'application/json' }, 
+        body: JSON.stringify({
+            name: 'Sussy Baka',
+            amount: 69,
+            isSomething: false,
+            children: [
+                {
+                    name: 'Bussy Saka',
+                    amount: 420,
+                    isSomething: true,
+                    children: []
+                },{
+                      name: 'John',
+                      amount: -27,
+                      isSomething: false,
+                      children: []
+                  }
+            ]
+        }) 
+    })
+    .then(d => d.text())
+    .then(d => out.innerText = d);
+})
+</script>
